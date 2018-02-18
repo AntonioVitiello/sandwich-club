@@ -1,28 +1,30 @@
-package com.udacity.sandwichclub.model;
+package com.udacity.sandwichclub.model_2;
+
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
+/**
+ * Created by Antonio on 17/02/2018.
+ */
+
 public class Sandwich {
-
+    @SerializedName("name")
+    @Expose
     private Name name;
+    @SerializedName("placeOfOrigin")
+    @Expose
     private String placeOfOrigin;
+    @SerializedName("description")
+    @Expose
     private String description;
+    @SerializedName("image")
+    @Expose
     private String image;
+    @SerializedName("ingredients")
+    @Expose
     private List<String> ingredients = null;
-
-    /**
-     * No args constructor for use in serialization
-     */
-    public Sandwich() {
-    }
-
-    public Sandwich(Name name, String placeOfOrigin, String description, String image, List<String> ingredients) {
-        this.name = name;
-        this.placeOfOrigin = placeOfOrigin;
-        this.description = description;
-        this.image = image;
-        this.ingredients = ingredients;
-    }
 
     public Name getName() {
         return name;
@@ -63,4 +65,5 @@ public class Sandwich {
     public void setIngredients(List<String> ingredients) {
         this.ingredients = ingredients;
     }
+
 }
