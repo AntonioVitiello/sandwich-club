@@ -1,4 +1,4 @@
-# Sandwich Club Project Starter Code
+# Sandwich Club Project, a project for Udacity Android Developer NanoDegree course
 
 ## Project Overview
 In this project, you will complete the **Sandwich Club** app to
