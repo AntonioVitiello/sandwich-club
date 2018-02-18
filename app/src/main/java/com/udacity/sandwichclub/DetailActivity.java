@@ -99,7 +99,6 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI(Sandwich sandwich) {
         Picasso.with(this)
                 .load(sandwich.getImage())
-//                .transform(new RoundImageTrans())
                 .into(ingredientsIv);
 
         setTitle(sandwich.getName().getMainName());
