@@ -6,26 +6,31 @@ import java.util.List;
  * Created by Antonio on 19/02/2018.
  */
 public class DetailActivityModel {
-    private String name;
     private String placeOfOrigin;
     private String description;
     private String ingredients;
     private String alsoKnownAs;
 
     public DetailActivityModel(Sandwich sandwich) {
-        name = sandwich.getName().getMainName();
-        placeOfOrigin = sandwich.getPlaceOfOrigin();
-        description = sandwich.getDescription();
-        ingredients = formatList(sandwich.getIngredients());
-        alsoKnownAs = formatList(sandwich.getName().getAlsoKnownAs());
-    }
+        String value = sandwich.getPlaceOfOrigin();
+        if(!isBlank(value)) {
+            placeOfOrigin = value;
+        }
 
-    public String getName() {
-        return name;
-    }
+        value = sandwich.getDescription();
+        if(!isBlank(value)) {
+            description = value;
+        }
 
-    public void setName(String name) {
-        this.name = name;
+        value = formatList(sandwich.getIngredients());
+        if(!isBlank(value)) {
+            ingredients = value;
+        }
+
+        value = formatList(sandwich.getName().getAlsoKnownAs());
+        if(!isBlank(value)) {
+            alsoKnownAs = value;
+        }
     }
 
     public String getPlaceOfOrigin() {
@@ -72,6 +77,10 @@ public class DetailActivityModel {
             sb.append(" - ").append(listItems.get(i));
         }
         return sb.toString();
+    }
+
+    private boolean isBlank(String description) {
+        return description == null || description.length() == 0;
     }
 
 }

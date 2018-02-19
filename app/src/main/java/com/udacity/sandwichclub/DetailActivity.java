@@ -5,7 +5,6 @@ import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.View;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -49,12 +48,9 @@ public class DetailActivity extends AppCompatActivity {
             return;
         }
 
+        setTitle(sandwich.getName().getMainName());
         populateUI(sandwich);
 
-    }
-
-    private boolean isBlank(String description) {
-        return description == null || description.length() == 0;
     }
 
     private void closeOnError() {
@@ -69,26 +65,6 @@ public class DetailActivity extends AppCompatActivity {
 
         DetailActivityModel model = new DetailActivityModel(sandwich);
         mBinding.setModel(model);
-
-        if(isBlank(model.getDescription())){
-            mBinding.descriptionLbl.setVisibility(View.GONE);
-            mBinding.descriptionTv.setVisibility(View.GONE);
-        }
-
-        if(isBlank(model.getIngredients())) {
-            mBinding.alsoKnownLbl.setVisibility(View.GONE);
-            mBinding.ingredientsTv.setVisibility(View.GONE);
-        }
-
-        if(isBlank(model.getPlaceOfOrigin())) {
-            mBinding.originLbl.setVisibility(View.GONE);
-            mBinding.originTv.setVisibility(View.GONE);
-        }
-
-        if(isBlank(model.getAlsoKnownAs())) {
-            mBinding.alsoKnownLbl.setVisibility(View.GONE);
-            mBinding.alsoKnownTv.setVisibility(View.GONE);
-        }
     }
 
 }

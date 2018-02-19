@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+        <import type="android.view.View"/>
         <variable name="model" type="com.udacity.sandwichclub.model.DetailActivityModel"/>
     </data>
 
@@ -31,7 +32,9 @@
             <TextView
                 android:id="@+id/also_known_lbl"
                 style="@style/label_format"
-                android:text="@string/detail_also_known_as_label" />
+                android:text="@string/detail_also_known_as_label"
+                android:visibility="@{model.alsoKnownAs != null ? View.VISIBLE : View.GONE}"
+                />
 
             <TextView
                 android:id="@+id/also_known_tv"
@@ -39,12 +42,15 @@
                 android:layout_height="wrap_content"
                 tools:text="Night clubs"
                 android:text="@{model.alsoKnownAs}"
+                android:visibility="@{model.alsoKnownAs != null ? View.VISIBLE : View.GONE}"
                 />
 
             <TextView
                 android:id="@+id/description_lbl"
                 style="@style/label_format"
-                android:text="@string/detail_description_label" />
+                android:text="@string/detail_description_label"
+                android:visibility="@{model.description != null ? View.VISIBLE : View.GONE}"
+                />
 
             <TextView
                 android:id="@+id/description_tv"
@@ -52,12 +58,15 @@
                 android:layout_height="wrap_content"
                 tools:text="Some description..."
                 android:text="@{model.description}"
+                android:visibility="@{model.description != null ? View.VISIBLE : View.GONE}"
                 />
 
             <TextView
                 android:id="@+id/origin_lbl"
                 style="@style/label_format"
-                android:text="@string/detail_place_of_origin_label" />
+                android:text="@string/detail_place_of_origin_label"
+                android:visibility="@{model.placeOfOrigin != null ? View.VISIBLE : View.GONE}"
+                />
 
             <TextView
                 android:id="@+id/origin_tv"
@@ -65,12 +74,15 @@
                 android:layout_height="wrap_content"
                 tools:text="Cuba"
                 android:text="@{model.placeOfOrigin}"
+                android:visibility="@{model.placeOfOrigin != null ? View.VISIBLE : View.GONE}"
                 />
 
             <TextView
                 android:id="@+id/ingredients_lbl"
                 style="@style/label_format"
-                android:text="@string/detail_ingredients_label" />
+                android:text="@string/detail_ingredients_label"
+                android:visibility="@{model.ingredients != null ? View.VISIBLE : View.GONE}"
+                />
 
             <TextView
                 android:id="@+id/ingredients_tv"
@@ -78,6 +90,7 @@
                 android:layout_height="wrap_content"
                 tools:text="A lot of ingredients..."
                 android:text="@{model.ingredients}"
+                android:visibility="@{model.ingredients != null ? View.VISIBLE : View.GONE}"
                 />
 
         </LinearLayout>
