@@ -1,15 +1,15 @@
 package com.udacity.sandwichclub;
 
 import android.content.Intent;
+import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
+import com.udacity.sandwichclub.databinding.ActivityDetailBinding;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
 
@@ -21,31 +21,12 @@ public class DetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
-
-    private ImageView ingredientsIv;
-    private TextView alsoKnownAsTv;
-    private TextView ingredientsTv;
-    private TextView placeOriginTv;
-    private TextView descriptionTv;
-    private View descriptionLbl;
-    private View placeOriginLbl;
-    private View ingredientsLbl;
-    private View alsoKnownAsLbl;
+    private ActivityDetailBinding mBinding;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_detail);
-
-        ingredientsIv = findViewById(R.id.image_iv);
-        alsoKnownAsLbl = findViewById(R.id.also_known_lbl);
-        alsoKnownAsTv = findViewById(R.id.also_known_tv);
-        ingredientsLbl = findViewById(R.id.ingredients_lbl);
-        ingredientsTv = findViewById(R.id.ingredients_tv);
-        placeOriginLbl = findViewById(R.id.origin_lbl);
-        placeOriginTv = findViewById(R.id.origin_tv);
-        descriptionLbl = findViewById(R.id.description_lbl);
-        descriptionTv = findViewById(R.id.description_tv);
+        mBinding = DataBindingUtil.setContentView(this, R.layout.activity_detail);
 
         Intent intent = getIntent();
         if (intent == null) {
@@ -99,40 +80,40 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI(Sandwich sandwich) {
         Picasso.with(this)
                 .load(sandwich.getImage())
-                .into(ingredientsIv);
+                .into(mBinding.imageIv);
 
         setTitle(sandwich.getName().getMainName());
 
         String description = sandwich.getDescription();
         if(isBlank(description)){
-            descriptionLbl.setVisibility(View.GONE);
-            descriptionTv.setVisibility(View.GONE);
+            mBinding.descriptionLbl.setVisibility(View.GONE);
+            mBinding.descriptionTv.setVisibility(View.GONE);
         } else {
-            descriptionTv.setText(description);
+            mBinding.descriptionTv.setText(description);
         }
 
         List<String> ingredients = sandwich.getIngredients();
         if(ingredients.size() == 0) {
-            ingredientsLbl.setVisibility(View.GONE);
-            ingredientsTv.setVisibility(View.GONE);
+            mBinding.alsoKnownLbl.setVisibility(View.GONE);
+            mBinding.ingredientsTv.setVisibility(View.GONE);
         } else {
-            ingredientsTv.setText(formatList(ingredients));
+            mBinding.ingredientsTv.setText(formatList(ingredients));
         }
 
         String placeOfOrigin = sandwich.getPlaceOfOrigin();
         if(isBlank(placeOfOrigin)) {
-            placeOriginLbl.setVisibility(View.GONE);
-            placeOriginTv.setVisibility(View.GONE);
+            mBinding.originLbl.setVisibility(View.GONE);
+            mBinding.originTv.setVisibility(View.GONE);
         } else {
-            placeOriginTv.setText(placeOfOrigin);
+            mBinding.originTv.setText(placeOfOrigin);
         }
 
         List<String> alsoKnownAs = sandwich.getName().getAlsoKnownAs();
         if(alsoKnownAs.size() == 0) {
-            alsoKnownAsLbl.setVisibility(View.GONE);
-            alsoKnownAsTv.setVisibility(View.GONE);
+            mBinding.alsoKnownLbl.setVisibility(View.GONE);
+            mBinding.alsoKnownTv.setVisibility(View.GONE);
         } else {
-            alsoKnownAsTv.setText(formatList(alsoKnownAs));
+            mBinding.alsoKnownTv.setText(formatList(alsoKnownAs));
         }
     }
 

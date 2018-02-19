@@ -1,72 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <LinearLayout
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:context="com.udacity.sandwichclub.DetailActivity"
-        android:layout_marginLeft="4dp"
-        android:layout_marginRight="4dp"
-        android:layout_marginTop="4dp"
-        >
+        android:layout_height="wrap_content">
 
-        <ImageView
-            android:id="@+id/image_iv"
+        <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:contentDescription="@string/sandwich_picture_content_description"
-            android:scaleType="centerCrop"
-            android:adjustViewBounds="true"
-            tools:src="@drawable/placeholder" />
-
-        <TextView
-            android:id="@+id/also_known_lbl"
-            android:text="@string/detail_also_known_as_label"
-            style="@style/label_format"
-            />
-
-        <TextView
-            android:id="@+id/also_known_tv"
-            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            tools:text="Night clubs" />
+            android:layout_marginLeft="4dp"
+            android:layout_marginRight="4dp"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical"
+            tools:context="com.udacity.sandwichclub.DetailActivity">
 
-        <TextView
-            android:id="@+id/description_lbl"
-            android:text="@string/detail_description_label"
-            style="@style/label_format" />
+            <ImageView
+                android:id="@+id/image_iv"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:adjustViewBounds="true"
+                android:contentDescription="@string/sandwich_picture_content_description"
+                android:scaleType="centerCrop"
+                tools:src="@drawable/placeholder" />
 
-        <TextView
-            android:id="@+id/description_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Some description..." />
+            <TextView
+                android:id="@+id/also_known_lbl"
+                style="@style/label_format"
+                android:text="@string/detail_also_known_as_label" />
 
-        <TextView
-            android:id="@+id/origin_lbl"
-            android:text="@string/detail_place_of_origin_label"
-            style="@style/label_format" />
+            <TextView
+                android:id="@+id/also_known_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Night clubs" />
 
-        <TextView
-            android:id="@+id/origin_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="Cuba" />
+            <TextView
+                android:id="@+id/description_lbl"
+                style="@style/label_format"
+                android:text="@string/detail_description_label" />
 
-        <TextView
-            android:id="@+id/ingredients_lbl"
-            android:text="@string/detail_ingredients_label"
-            style="@style/label_format" />
+            <TextView
+                android:id="@+id/description_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Some description..." />
 
-        <TextView
-            android:id="@+id/ingredients_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            tools:text="A lot of ingredients..." />
+            <TextView
+                android:id="@+id/origin_lbl"
+                style="@style/label_format"
+                android:text="@string/detail_place_of_origin_label" />
 
-    </LinearLayout>
-</ScrollView>
+            <TextView
+                android:id="@+id/origin_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="Cuba" />
+
+            <TextView
+                android:id="@+id/ingredients_lbl"
+                style="@style/label_format"
+                android:text="@string/detail_ingredients_label" />
+
+            <TextView
+                android:id="@+id/ingredients_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                tools:text="A lot of ingredients..." />
+
+        </LinearLayout>
+    </ScrollView>
+</layout>
