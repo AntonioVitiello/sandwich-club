@@ -36,23 +36,23 @@ public class JsonUtils {
             JSONObject jsonObj = new JSONObject(json);
 
             // Get name object
-            JSONObject nameObj = jsonObj.getJSONObject("name");
-            String mainName = nameObj.getString("mainName");
-            JSONArray alsoKnownAsJsonArray = nameObj.getJSONArray("alsoKnownAs");
+            JSONObject nameObj = jsonObj.optJSONObject("name");
+            String mainName = nameObj.optString("mainName");
+            JSONArray alsoKnownAsJsonArray = nameObj.optJSONArray("alsoKnownAs");
             List<String> alsoKnownAsList = new ArrayList<>();
             for (int i = 0; i < alsoKnownAsJsonArray.length(); i++) {
-                alsoKnownAsList.add(alsoKnownAsJsonArray.getString(i));
+                alsoKnownAsList.add(alsoKnownAsJsonArray.optString(i));
             }
             Name nameModel = new Name(mainName, alsoKnownAsList);
 
             // Get other content
-            String placeOfOrigin = jsonObj.getString("placeOfOrigin");
-            String description = jsonObj.getString("description");
-            String image = jsonObj.getString("image");
-            JSONArray ingredientsJsonArray = jsonObj.getJSONArray("ingredients");
+            String placeOfOrigin = jsonObj.optString("placeOfOrigin");
+            String description = jsonObj.optString("description");
+            String image = jsonObj.optString("image");
+            JSONArray ingredientsJsonArray = jsonObj.optJSONArray("ingredients");
             List<String> ingredientsList = new ArrayList<>();
             for (int i = 0; i < ingredientsJsonArray.length(); i++) {
-                ingredientsList.add(ingredientsJsonArray.getString(i));
+                ingredientsList.add(ingredientsJsonArray.optString(i));
             }
 
             sandwichModel = new Sandwich(nameModel, placeOfOrigin, description, image, ingredientsList);
