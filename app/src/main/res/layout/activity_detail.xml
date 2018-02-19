@@ -2,6 +2,10 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <data>
+        <variable name="model" type="com.udacity.sandwichclub.model.DetailActivityModel"/>
+    </data>
+
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
@@ -33,7 +37,9 @@
                 android:id="@+id/also_known_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Night clubs" />
+                tools:text="Night clubs"
+                android:text="@{model.alsoKnownAs}"
+                />
 
             <TextView
                 android:id="@+id/description_lbl"
@@ -44,7 +50,9 @@
                 android:id="@+id/description_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Some description..." />
+                tools:text="Some description..."
+                android:text="@{model.description}"
+                />
 
             <TextView
                 android:id="@+id/origin_lbl"
@@ -55,7 +63,9 @@
                 android:id="@+id/origin_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="Cuba" />
+                tools:text="Cuba"
+                android:text="@{model.placeOfOrigin}"
+                />
 
             <TextView
                 android:id="@+id/ingredients_lbl"
@@ -66,7 +76,9 @@
                 android:id="@+id/ingredients_tv"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="A lot of ingredients..." />
+                tools:text="A lot of ingredients..."
+                android:text="@{model.ingredients}"
+                />
 
         </LinearLayout>
     </ScrollView>

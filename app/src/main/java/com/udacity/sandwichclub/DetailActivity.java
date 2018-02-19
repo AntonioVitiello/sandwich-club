@@ -10,10 +10,9 @@ import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 import com.udacity.sandwichclub.databinding.ActivityDetailBinding;
+import com.udacity.sandwichclub.model.DetailActivityModel;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
-
-import java.util.List;
 
 public class DetailActivity extends AppCompatActivity {
     private static final String LOG_PREFIX = "Antonio";
@@ -58,20 +57,6 @@ public class DetailActivity extends AppCompatActivity {
         return description == null || description.length() == 0;
     }
 
-    private String formatList(List<String> listItems) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < listItems.size(); i++) {
-            switch(i){
-                case 0:
-                    break;
-                default:
-                    sb.append(String.format("%n"));
-            }
-            sb.append(" - ").append(listItems.get(i));
-        }
-        return sb.toString();
-    }
-
     private void closeOnError() {
         finish();
         Toast.makeText(this, R.string.detail_error_message, Toast.LENGTH_SHORT).show();
@@ -82,38 +67,27 @@ public class DetailActivity extends AppCompatActivity {
                 .load(sandwich.getImage())
                 .into(mBinding.imageIv);
 
-        setTitle(sandwich.getName().getMainName());
+        DetailActivityModel model = new DetailActivityModel(sandwich);
+        mBinding.setModel(model);
 
-        String description = sandwich.getDescription();
-        if(isBlank(description)){
+        if(isBlank(model.getDescription())){
             mBinding.descriptionLbl.setVisibility(View.GONE);
             mBinding.descriptionTv.setVisibility(View.GONE);
-        } else {
-            mBinding.descriptionTv.setText(description);
         }
 
-        List<String> ingredients = sandwich.getIngredients();
-        if(ingredients.size() == 0) {
+        if(isBlank(model.getIngredients())) {
             mBinding.alsoKnownLbl.setVisibility(View.GONE);
             mBinding.ingredientsTv.setVisibility(View.GONE);
-        } else {
-            mBinding.ingredientsTv.setText(formatList(ingredients));
         }
 
-        String placeOfOrigin = sandwich.getPlaceOfOrigin();
-        if(isBlank(placeOfOrigin)) {
+        if(isBlank(model.getPlaceOfOrigin())) {
             mBinding.originLbl.setVisibility(View.GONE);
             mBinding.originTv.setVisibility(View.GONE);
-        } else {
-            mBinding.originTv.setText(placeOfOrigin);
         }
 
-        List<String> alsoKnownAs = sandwich.getName().getAlsoKnownAs();
-        if(alsoKnownAs.size() == 0) {
+        if(isBlank(model.getAlsoKnownAs())) {
             mBinding.alsoKnownLbl.setVisibility(View.GONE);
             mBinding.alsoKnownTv.setVisibility(View.GONE);
-        } else {
-            mBinding.alsoKnownTv.setText(formatList(alsoKnownAs));
         }
     }
 
