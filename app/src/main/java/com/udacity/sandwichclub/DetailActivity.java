@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
@@ -12,10 +11,10 @@ import com.udacity.sandwichclub.databinding.ActivityDetailBinding;
 import com.udacity.sandwichclub.model.DetailActivityModel;
 import com.udacity.sandwichclub.model.Sandwich;
 import com.udacity.sandwichclub.utils.JsonUtils;
+import com.util.Log;
 
 public class DetailActivity extends AppCompatActivity {
-    private static final String LOG_PREFIX = "Antonio";
-    private static final String LOG_TAG = LOG_PREFIX + DetailActivity.class.getSimpleName();
+    private static final String LOG_TAG = DetailActivity.class.getSimpleName();
 
     public static final String EXTRA_POSITION = "extra_position";
     private static final int DEFAULT_POSITION = -1;
@@ -61,6 +60,7 @@ public class DetailActivity extends AppCompatActivity {
     private void populateUI(Sandwich sandwich) {
         Picasso.with(this)
                 .load(sandwich.getImage())
+//                .transform(new CircleImageTransform())
                 .into(mBinding.imageIv);
 
         DetailActivityModel model = new DetailActivityModel(sandwich);
